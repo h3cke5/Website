@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="stylesheet" type="text/css" href="styles.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="icon" type="image/x-icon" href="./assets/favico/default.ico">
+</head>
+<body class="custom-cursor">
+  <!-- CMD WINDOW -->
+  <div id="terminal" class="custom-cursor">
+    <div id="terminal-header">
+      <div id="terminal-buttons">
+        <!-- CMD BUTOES -->
+        <div class="terminal-button" id="close-button"></div>
+        <div class="terminal-button" id="minimize-button"></div>
+        <div class="terminal-button" id="maximize-button"></div>
+      </div>
+    </div>
+    <div id="terminal-content">
+      <p id="terminal-text"></p>
+    </div>
+  </div>
+  <!-- BACKGROUND -->
+  <div id="video-background">
+    <video autoplay muted loop id="myVideo">
+      <source src="./assets/back/default.mp4" type="video/mp4">
+      Your Browser Does Not Support HTML5 Video.
+    </video>
+    <div id="audio-background">
+      <audio autoplay loop id="myAudio">
+        <source src="./assets/music/default.mp3" type="audio/mpeg">
+        Your Browser Does Not Support The Audio Element.
+      </audio>
+    </div>
+    <div id="blurred-box">
+      <img id="profile-picture" src="./assets/pfp/default.jpg" alt="Profile Picture">
+      <img id="avatar-frame" src="" alt="Avatar Frame">
+      <p id="username" style="color: white; font-weight: bold; font-size: large;">H3CKE5</p> <!-- Username -->
+      <div class="user-description">
+        <button class="user-button" onclick="window.location.href='https:/www.kugooescooters.com/?ref=h3cke5';">Kukirin Web</button>
+        <button class="user-button" onclick="window.location.href='https:/www.tiktok.com/@h3cke5';">TikTok</button>
+        <button class="user-button" onclick="window.location.href='/contato.html';">Contact</button>
+      </div>      
+      
+      <div class="links">
+        <a href="https://www.twitch.tv/h3cke5" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a> 
+        <a href="https://www.twitch.tv/h3cke5" target="_blank">
+          <i class="fab fa-twitch"></i> 
+        </a> 
+        <a href="https://x.com/h3cke5" target="_blank">
+          <i class="fa-brands fa-twitter"></i>
+        </a> 
+        <a href="https://www.instagram.com/h3cke5" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a> 
+      </div>
+    </div>
+  </div>
+  <script src="./assets/js/script.js"></script> <!-- SCRIPT PARA FUNCIONALIDADE -->
+  <script src="./assets/js/title.js"></script> <!-- SCRIPT PARA TITULO FUNCIONALIDADE -->
+  <script src="./assets/js/discord.js"></script> <!-- SCRIPT PARA DISCORD FUNCIONALIDADE -->
+</body>
+</html>
