@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Agora responsivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>H3CKE5</title>
   <link rel="stylesheet" type="text/css" href="styles.css"> 
@@ -15,8 +14,8 @@
       width: 90%;
       max-width: 900px;
       margin: 20px auto;
-      background: #111;
-      color: #0f0;
+      background: rgba(0, 0, 0, 0.85); /* Preto translúcido */
+      color: #00ff00; /* Verde original tipo terminal */
       font-family: monospace;
       border-radius: 8px;
       padding: 10px;
@@ -27,7 +26,7 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      background: #222;
+      background: rgba(30,30,30,0.9);
       padding: 6px;
       border-radius: 6px 6px 0 0;
     }
@@ -55,15 +54,15 @@
 
     /* ===== Blurred Box ===== */
     #blurred-box {
-      position: relative;
-      margin: auto;
-      margin-top: 30px;
-      max-width: 400px;
-      background: rgba(0,0,0,0.6);
+      width: 90%;
+      max-width: 500px;
+      margin: 30px auto;
+      background: rgba(0,0,0,0.65); /* Voltei ao translúcido original */
       border-radius: 12px;
       padding: 20px;
       text-align: center;
       backdrop-filter: blur(6px);
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
     }
 
     #profile-picture {
@@ -80,14 +79,19 @@
       padding: 12px;
       border: none;
       border-radius: 8px;
-      background: #222;
+      background: rgba(20,20,20,0.8); /* Preto suave */
       color: white;
       cursor: pointer;
       transition: background 0.2s;
+      font-size: 15px;
     }
 
     .user-button:hover {
-      background: #444;
+      background: rgba(40,40,40,0.9);
+    }
+
+    .links {
+      margin-top: 20px;
     }
 
     .links a {
@@ -98,7 +102,7 @@
     }
 
     .links a:hover {
-      color: #aaa;
+      color: #00ff00; /* Hover verde para combinar com o terminal */
     }
 
     /* ===== Ajustes Mobile ===== */
@@ -110,7 +114,8 @@
 
       #blurred-box {
         margin-top: 15vh;
-        width: 90%;
+        width: 95%;
+        padding: 15px;
       }
 
       #profile-picture {
@@ -132,7 +137,7 @@
 
 <body class="custom-cursor">
 
-  <!-- Terminal (agora funciona no mobile também) -->
+  <!-- Terminal -->
   <div id="terminal" class="custom-cursor">
     <div id="terminal-header">
       <div id="terminal-buttons">
@@ -160,6 +165,7 @@
       </audio>
     </div>
 
+    <!-- Caixa com botões agora estilo terminal -->
     <div id="blurred-box">
       <img id="profile-picture" src="./assets/pfp/default.jpg" alt="Profile Picture">
       <img id="avatar-frame" src="" alt="Avatar Frame">
@@ -172,7 +178,7 @@
         <button class="user-button" onclick="window.location.href='/contato.html';">Contact</button>
       </div>
 
-      <div class="links" style="margin-top: 20px;">
+      <div class="links">
         <a href="https://www.instagram.com/wheels.workshop/" target="_blank"><i class="fab fa-instagram"></i></a> 
         <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a> 
         <a href="https://www.twitch.tv/h3cke5" target="_blank"><i class="fab fa-twitch"></i></a> 
