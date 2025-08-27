@@ -2,71 +2,160 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1024, initial-scale=1, user-scalable=yes">
-  <title></title>
+  <!-- Ajuste do viewport para responsividade -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H3CKE5</title>
   <link rel="stylesheet" type="text/css" href="styles.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="icon" type="image/x-icon" href="./assets/favico/default.ico">
 
-  <script>
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      let mv = document.querySelector('meta[name="viewport"]');
-      if (!mv) {
-        mv = document.createElement('meta');
-        mv.name = 'viewport';
-        document.head.appendChild(mv);
-      }
-      mv.content = 'width=1024, initial-scale=1, user-scalable=yes';
-    }
-  </script>
-
   <style>
+    /* Força terminal visível apenas no desktop */
+    #terminal {
+      width: 80%;
+      max-width: 900px;
+      margin: 20px auto;
+      background: #111;
+      color: #0f0;
+      font-family: monospace;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    #terminal-header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background: #222;
+      padding: 6px;
+      border-radius: 6px 6px 0 0;
+    }
+
+    #terminal-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    #close-button { background: #ff5f56; }
+    #minimize-button { background: #ffbd2e; }
+    #maximize-button { background: #27c93f; }
+
+    #terminal-content {
+      padding: 10px;
+    }
+
+    /* Mobile: esconde terminal */
     @media screen and (max-width: 768px) {
-      html, body {
-        min-width: 1024px;
-        overflow-x: auto;
+      #terminal {
+        display: none;
       }
+    }
+
+    /* Responsividade geral */
+    #blurred-box {
+      position: relative;
+      margin: auto;
+      margin-top: 10vh;
+      max-width: 400px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    #profile-picture {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .user-button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .user-button:hover {
+      background: #444;
+    }
+
+    .links a {
+      margin: 0 10px;
+      font-size: 22px;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .links a:hover {
+      color: #aaa;
     }
   </style>
 </head>
 
+<body class="custom-cursor">
+
+  <!-- Terminal (some no mobile) -->
+  <div id="terminal" class="custom-cursor">
+    <div id="terminal-header">
+      <div id="terminal-buttons">
+        <div class="terminal-button" id="close-button"></div>
+        <div class="terminal-button" id="minimize-button"></div>
+        <div class="terminal-button" id="maximize-button"></div>
+      </div>
+    </div>
+    <div id="terminal-content">
+      <p id="terminal-text">Bem-vindo ao H3CKE5 🚀</p>
+    </div>
+  </div>
+
+  <!-- Vídeo + Conteúdo -->
   <div id="video-background">
     <video autoplay muted loop id="myVideo">
       <source src="https://cdn.glitch.me/d2b38c04-e2ed-4e52-9620-777a6643c96d/default.mp4.mp4?v=1747750161024" type="video/mp4">
-      Your Browser Does Not Support HTML5 Video.
+      Seu navegador não suporta vídeo HTML5.
     </video>
+
     <div id="audio-background">
       <audio autoplay loop id="myAudio">
         <source src="./assets/music/default.mp3" type="audio/mpeg">
-        Your Browser Does Not Support The Audio Element.
+        Seu navegador não suporta áudio.
       </audio>
     </div>
+
     <div id="blurred-box">
       <img id="profile-picture" src="./assets/pfp/default.jpg" alt="Profile Picture">
-      <img id="avatar-frame" src="" alt="Avatar Frame">
       <p id="username" style="color: white; font-weight: bold; font-size: large;">H3CKE5</p>
+      
       <div class="user-description">
-        <button class="user-button" onclick="window.location.href='https:/www.kugooescooters.com/?ref=h3cke5';">Kukirin Web</button>
+        <button class="user-button" onclick="window.location.href='https://www.kugooescooters.com/?ref=h3cke5';">Kukirin Web</button>
         <button class="user-button" onclick="window.location.href='https://s.click.aliexpress.com/e/_oC5tkDY';">G4 BRAKE (Y5ZS Y5ZS-1 160MM)</button>
-        <button class="user-button" onclick="window.location.href='https:/www.tiktok.com/@h3cke5';">TikTok</button>
+        <button class="user-button" onclick="window.location.href='https://www.tiktok.com/@h3cke5';">TikTok</button>
         <button class="user-button" onclick="window.location.href='/contato.html';">Contact</button>
       </div>
-      <div class="links" style="position: relative; margin-top: 20px;">
-        <a href="https://www.instagram.com/wheels.workshop/" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a> 
-        <a href="https://www.twitch.tv/h3cke5" target="_blank">
-          <i class="fab fa-discord"></i>
-        </a> 
-        <a href="https://www.twitch.tv/h3cke5" target="_blank">
-          <i class="fab fa-twitch"></i> 
-        </a> 
-        <a href="https://x.com/h3cke5" target="_blank">
-          <i class="fa-brands fa-twitter"></i>
-        </a> 
-        <a href="https://www.instagram.com/h3cke5" target="_blank">
-          <i class="fa-brands fa-instagram"></i>
-        </a> 
+
+      <div class="links" style="margin-top: 20px;">
+        <a href="https://www.instagram.com/wheels.workshop/" target="_blank"><i class="fab fa-instagram"></i></a> 
+        <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a> 
+        <a href="https://www.twitch.tv/h3cke5" target="_blank"><i class="fab fa-twitch"></i></a> 
+        <a href="https://x.com/h3cke5" target="_blank"><i class="fa-brands fa-twitter"></i></a> 
+        <a href="https://www.instagram.com/h3cke5" target="_blank"><i class="fa-brands fa-instagram"></i></a> 
       </div>
     </div>
   </div>
