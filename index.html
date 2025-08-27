@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Ajuste do viewport para responsividade -->
+  <!-- Responsividade correta -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>H3CKE5</title>
   <link rel="stylesheet" type="text/css" href="styles.css"> 
@@ -10,7 +10,7 @@
   <link rel="icon" type="image/x-icon" href="./assets/favico/default.ico">
 
   <style>
-    /* Força terminal visível apenas no desktop */
+    /* ===== Terminal ===== */
     #terminal {
       width: 80%;
       max-width: 900px;
@@ -52,18 +52,11 @@
       padding: 10px;
     }
 
-    /* Mobile: esconde terminal */
-    @media screen and (max-width: 768px) {
-      #terminal {
-        display: none;
-      }
-    }
-
-    /* Responsividade geral */
+    /* ===== Blurred Box ===== */
     #blurred-box {
       position: relative;
       margin: auto;
-      margin-top: 10vh;
+      margin-top: 30px; /* fica logo abaixo do terminal */
       max-width: 400px;
       background: rgba(0,0,0,0.6);
       border-radius: 12px;
@@ -106,12 +99,23 @@
     .links a:hover {
       color: #aaa;
     }
+
+    /* ===== Mobile ===== */
+    @media screen and (max-width: 768px) {
+      #terminal {
+        display: none; /* esconde terminal */
+      }
+      #blurred-box {
+        margin-top: 15vh; /* sobe para o meio da tela */
+        width: 90%;
+      }
+    }
   </style>
 </head>
 
 <body class="custom-cursor">
 
-  <!-- Terminal (some no mobile) -->
+  <!-- Terminal (visível no desktop, some no mobile) -->
   <div id="terminal" class="custom-cursor">
     <div id="terminal-header">
       <div id="terminal-buttons">
@@ -139,6 +143,7 @@
       </audio>
     </div>
 
+    <!-- Caixa com botões -->
     <div id="blurred-box">
       <img id="profile-picture" src="./assets/pfp/default.jpg" alt="Profile Picture">
       <p id="username" style="color: white; font-weight: bold; font-size: large;">H3CKE5</p>
