@@ -9,126 +9,38 @@
   <link rel="icon" type="image/x-icon" href="./assets/favico/default.ico">
 
   <style>
-    /* ===== Terminal ===== */
-    #terminal {
-      width: 90%;
-      max-width: 900px;
-      margin: 20px auto;
-      background: rgba(0, 0, 0, 0.85);
-      color: #00ff00;
-      font-family: monospace;
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
+  /* garante que o vídeo é background */
+  #video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* manda vídeo para trás */
+  }
 
-    #terminal-header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      background: rgba(30,30,30,0.9);
-      padding: 6px;
-      border-radius: 6px 6px 0 0;
-    }
+  #video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-    #terminal-buttons {
-      display: flex;
-      gap: 6px;
-    }
-
-    .terminal-button {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    #close-button { background: #ff5f56; }
-    #minimize-button { background: #ffbd2e; }
-    #maximize-button { background: #27c93f; }
-
-    #terminal-content {
-      padding: 10px;
-      font-size: 14px;
-    }
-
-    /* ===== Blurred Box (igual terminal) ===== */
-    #blurred-box {
-      width: 90%;
-      max-width: 900px;
-      margin: 20px auto;
-      background: rgba(0, 0, 0, 0.85); /* Igual terminal */
-      color: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-      text-align: center;
-    }
-
-    #profile-picture {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-
-    .user-button {
-      display: block;
-      width: 100%;
-      margin: 8px 0;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(30,30,30,0.9);
-      color: white;
-      cursor: pointer;
-      transition: background 0.2s;
-      font-size: 15px;
-    }
-
-    .user-button:hover {
-      background: rgba(60,60,60,0.9);
-    }
-
-    .links {
-      margin-top: 20px;
-    }
-
-    .links a {
-      margin: 0 10px;
-      font-size: 22px;
-      color: white;
-      transition: color 0.3s;
-    }
-
-    .links a:hover {
-      color: #00ff00;
-    }
-
-    /* ===== Mobile ===== */
-    @media screen and (max-width: 768px) {
-      #terminal,
-      #blurred-box {
-        width: 95%;
-        padding: 15px;
-        font-size: 13px;
-      }
-
-      #profile-picture {
-        width: 90px;
-        height: 90px;
-      }
-
-      .user-button {
-        font-size: 14px;
-        padding: 10px;
-      }
-
-      .links a {
-        font-size: 18px;
-      }
-    }
-  </style>
+  /* agora o blurred-box fica por cima, visível */
+  #blurred-box {
+    position: relative;  /* antes não tinha */
+    z-index: 10;         /* garante que aparece */
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    text-align: center;
+  }
+</style>
 </head>
 
 <body class="custom-cursor">
