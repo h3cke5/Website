@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Viewport correto para funcionar em mobile -->
+  <!-- Agora responsivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>H3CKE5</title>
   <link rel="stylesheet" type="text/css" href="styles.css"> 
@@ -10,21 +10,141 @@
   <link rel="icon" type="image/x-icon" href="./assets/favico/default.ico">
 
   <style>
-    /* Ajuste de responsividade */
+    /* ===== Terminal ===== */
+    #terminal {
+      width: 90%;
+      max-width: 900px;
+      margin: 20px auto;
+      background: #111;
+      color: #0f0;
+      font-family: monospace;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    #terminal-header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background: #222;
+      padding: 6px;
+      border-radius: 6px 6px 0 0;
+    }
+
+    #terminal-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    #close-button { background: #ff5f56; }
+    #minimize-button { background: #ffbd2e; }
+    #maximize-button { background: #27c93f; }
+
+    #terminal-content {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    /* ===== Blurred Box ===== */
+    #blurred-box {
+      position: relative;
+      margin: auto;
+      margin-top: 30px;
+      max-width: 400px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    #profile-picture {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .user-button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .user-button:hover {
+      background: #444;
+    }
+
+    .links a {
+      margin: 0 10px;
+      font-size: 22px;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .links a:hover {
+      color: #aaa;
+    }
+
+    /* ===== Ajustes Mobile ===== */
     @media screen and (max-width: 768px) {
+      #terminal {
+        font-size: 12px;
+        padding: 8px;
+      }
+
       #blurred-box {
         margin-top: 15vh;
         width: 90%;
       }
+
       #profile-picture {
         width: 90px;
         height: 90px;
+      }
+
+      .user-button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .links a {
+        font-size: 18px;
       }
     }
   </style>
 </head>
 
 <body class="custom-cursor">
+
+  <!-- Terminal (agora funciona no mobile também) -->
+  <div id="terminal" class="custom-cursor">
+    <div id="terminal-header">
+      <div id="terminal-buttons">
+        <div class="terminal-button" id="close-button"></div>
+        <div class="terminal-button" id="minimize-button"></div>
+        <div class="terminal-button" id="maximize-button"></div>
+      </div>
+    </div>
+    <div id="terminal-content">
+      <p id="terminal-text"></p>
+    </div>
+  </div>
 
   <!-- Vídeo + Conteúdo -->
   <div id="video-background">
@@ -52,22 +172,12 @@
         <button class="user-button" onclick="window.location.href='/contato.html';">Contact</button>
       </div>
 
-      <div class="links" style="position: relative; margin-top: 20px;">
-        <a href="https://www.instagram.com/wheels.workshop/" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a> 
-        <a href="https://discord.gg/" target="_blank">
-          <i class="fab fa-discord"></i>
-        </a> 
-        <a href="https://www.twitch.tv/h3cke5" target="_blank">
-          <i class="fab fa-twitch"></i> 
-        </a> 
-        <a href="https://x.com/h3cke5" target="_blank">
-          <i class="fa-brands fa-twitter"></i>
-        </a> 
-        <a href="https://www.instagram.com/h3cke5" target="_blank">
-          <i class="fa-brands fa-instagram"></i>
-        </a> 
+      <div class="links" style="margin-top: 20px;">
+        <a href="https://www.instagram.com/wheels.workshop/" target="_blank"><i class="fab fa-instagram"></i></a> 
+        <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a> 
+        <a href="https://www.twitch.tv/h3cke5" target="_blank"><i class="fab fa-twitch"></i></a> 
+        <a href="https://x.com/h3cke5" target="_blank"><i class="fa-brands fa-twitter"></i></a> 
+        <a href="https://www.instagram.com/h3cke5" target="_blank"><i class="fa-brands fa-instagram"></i></a> 
       </div>
     </div>
   </div>
