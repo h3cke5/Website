@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>With 🤍</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dark">
+  <div class="container">
+    <header>
+      <div class="avatar-wrapper">
+        <img id="profile-picture" class="avatar" src="https://cdn.discordapp.com/avatars/817378339228221440/bb840f326fc1f47f31a78dfc1618df31?size=256" alt="Avatar">
+        <img id="avatar-frame" src="" alt="Avatar Frame">
+      </div>
+      <h1>Sr. H3cke5</h1>
+      <p data-lang="ABOUT">Developer • Content Creator</p>
+      <button id="themeToggle">☀️</button>
+    </header>
+
+    <main>
+      <div class="link-card">
+        <a href="https://www.instagram.com/h3cke5" target="_blank" class="link-text">
+          <i class="fa-brands fa-instagram" style="margin-right:8px;"></i> <span data-lang="LINK_INSTAGRAM">Instagram</span>
+        </a>
+        <button class="qr-btn" onclick="openModal('https://www.instagram.com/h3cke5')">⋮</button>
+      </div>
+
+      <div class="link-card">
+        <a href="https://discord.com/users/817378339228221440" target="_blank" class="link-text">
+          <i class="fab fa-discord" style="margin-right:8px;"></i> <span data-lang="LINK_DISCORD">Discord</span>
+        </a>
+        <button class="qr-btn" onclick="openModal('https://discord.com/users/817378339228221440')">⋮</button>
+      </div>
+
+      <div class="link-card">
+        <a href="https://www.twitch.tv/h3cke5" target="_blank" class="link-text">
+          <i class="fab fa-twitch" style="margin-right:8px;"></i> <span data-lang="LINK_TWITCH">Twitch</span>
+        </a>
+        <button class="qr-btn" onclick="openModal('https://www.twitch.tv/h3cke5')">⋮</button>
+      </div>
+
+      <div class="link-card">
+        <a href="https://x.com/h3cke5" target="_blank" class="link-text">
+          <i class="fa-brands fa-twitter" style="margin-right:8px;"></i> <span data-lang="LINK_TWITTER">Twitter</span>
+        </a>
+        <button class="qr-btn" onclick="openModal('https://x.com/h3cke5')">⋮</button>
+      </div>
+
+      <div class="link-card">
+        <a href="https://github.com/h3cke5" target="_blank" class="link-text">
+          <i class="fa-brands fa-github" style="margin-right:8px;"></i> <span data-lang="LINK_GITHUB">GitHub</span>
+        </a>
+        <button class="qr-btn" onclick="openModal('https://github.com/h3cke5')">⋮</button>
+      </div>
+    </main>
+
+    <footer>
+      <p><span data-lang="FOOTER_COPY">© 2025 HECKA. All rights reserved.</span></p>
+    </footer>
+  </div>
+
+  <!-- Overlay QR -->
+  <div id="qrOverlay" class="overlay">
+    <div class="qr-box">
+      <button class="close-btn" onclick="closeModal()">✖</button>
+      <h2 data-lang="LINK">Share Link</h2>
+      <p data-lang="LINK_DESC">Scaneie o QR ou use os botões abaixo</p>
+
+      <div class="qr-inner">
+        <img id="qrImage" src="" alt="QR Code" class="qr-img">
+      </div>
+
+      <div class="actions">
+        <button id="shareBtn">🔗</button>
+        <button id="copyBtn">📋</button>
+        <button id="downloadBtn">⬇️</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Multilíngue
+    const langData = {
+      en: {
+    ABOUT: "Developer • Content Creator",
+    LINK: "Share Link",
+    LINK_DESC: "Scan the QR or use the buttons below",
+    LINK_INSTAGRAM: "Instagram",
+    LINK_DISCORD: "Discord",
+    LINK_TWITCH: "Twitch",
+    LINK_TWITTER: "Twitter / X",
+    LINK_GITHUB: "GitHub",
+    FOOTER_COPY: "© 2025 HECKA. All rights reserved."
+  },
+      pt: {
+        ABOUT: "Desenvolvedor • Criador de Conteúdo",
+        LINK: "Compartilhar Link",
+        LINK_DESC: "Scaneie o QR ou use os botões abaixo",
+        LINK_INSTAGRAM: "Instagram",
+        LINK_DISCORD: "Discord",
+        LINK_TWITCH: "Twitch",
+        LINK_TWITTER: "X / Twitter",
+        LINK_GITHUB: "GitHub",
+        FOOTER_COPY: "© 2025 HECKA. Todos os direitos reservados."
+      },
+      ro: {
+        ABOUT: "Dezvoltator • Creator de Conținut",
+        LINK: "Partajează Linkul",
+        LINK_DESC: "Scanează QR-ul sau folosește butoanele de mai jos",
+        LINK_INSTAGRAM: "Instagram",
+        LINK_DISCORD: "Discord",
+        LINK_TWITCH: "Twitch",
+        LINK_TWITTER: "Twitter / X",
+        LINK_GITHUB: "GitHub",
+        FOOTER_COPY: "© 2025 HECKA. Toate drepturile rezervate."
+      }
+    };
+
+    const userLang = navigator.language.slice(0,2);
+    const lang = ["en","pt","ro"].includes(userLang) ? userLang : "en";
+
+    document.querySelectorAll("[data-lang]").forEach(el => {
+      const key = el.getAttribute("data-lang");
+      if(langData[lang][key]) el.textContent = langData[lang][key];
+    });
+
+    // Atualização do avatar e frame
+    document.addEventListener('DOMContentLoaded', () => {
+      const userId = "817378339228221440";
+      const apiUrl = `https://discord-lookup-api-alpha.vercel.app/v1/user/${userId}`;
+      const profilePicture = document.getElementById('profile-picture');
+      const avatarFrame = document.getElementById('avatar-frame');
+
+      fetch(apiUrl)
+        .then(res => {
+          if(!res.ok) throw new Error(`HTTP Error! status: ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          // Atualiza avatar
+          const avatarUrl = data.avatar ? data.avatar.link : './assets/pfp/default.jpg';
+          profilePicture.src = avatarUrl;
+
+          // Atualiza frame se disponível
+          if(data.avatar_decoration && data.avatar_decoration.asset){
+            const asset = data.avatar_decoration.asset;
+            avatarFrame.src = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png`;
+            avatarFrame.style.display = 'block';
+          } else {
+            avatarFrame.style.display = 'none';
+          }
+        })
+        .catch(err => console.error("Error fetching user data:", err));
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
