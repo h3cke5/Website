@@ -1,169 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>With 🤍</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H E C K A</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/817378339228221440/64e5b32dd4e75d1137a77ba93243f7df">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark">
-  <div class="container">
-    <header>
-      <div class="avatar-wrapper">
-        <img id="profile-picture" class="avatar" src="https://cdn.discordapp.com/avatars/817378339228221440/bb840f326fc1f47f31a78dfc1618df31?size=256" alt="Avatar">
-        <img id="avatar-frame" src="" alt="Avatar Frame">
-      </div>
-      <h1>Sr. H3cke5</h1>
-      <p data-lang="ABOUT">Developer • Content Creator</p>
-      <button id="themeToggle">☀️</button>
-    </header>
+<body>
 
-    <main>
-      <div class="link-card">
-        <a href="https://o-otd.com/h3cke5" target="_blank" class="link-text">
-          <i class="fa-solid fa-network-wired" style="margin-right:8px;"></i> <span data-lang="LINK_OOTD">OOTD (HCKE FOR 10€)</span>
-        </a>
-        <button class="qr-btn" onclick="openModal('https://o-otd.com/h3cke5')">⋮</button>
-      </div>
-      <div class="link-card">
-        <a href="https://www.instagram.com/h3cke5" target="_blank" class="link-text">
-          <i class="fa-brands fa-instagram" style="margin-right:8px;"></i> <span data-lang="LINK_INSTAGRAM">Instagram</span>
-        </a>
-        <button class="qr-btn" onclick="openModal('https://www.instagram.com/h3cke5')">⋮</button>
-      </div>
+    <video autoplay loop muted playsinline id="video-bg"></video>
+    <div class="bg-overlay"></div>
 
-      <div class="link-card">
-        <a href="https://discord.com/users/817378339228221440" target="_blank" class="link-text">
-          <i class="fab fa-discord" style="margin-right:8px;"></i> <span data-lang="LINK_DISCORD">Discord</span>
-        </a>
-        <button class="qr-btn" onclick="openModal('https://discord.com/users/817378339228221440')">⋮</button>
-      </div>
-
-      <div class="link-card">
-        <a href="https://www.twitch.tv/h3cke5" target="_blank" class="link-text">
-          <i class="fab fa-twitch" style="margin-right:8px;"></i> <span data-lang="LINK_TWITCH">Twitch</span>
-        </a>
-        <button class="qr-btn" onclick="openModal('https://www.twitch.tv/h3cke5')">⋮</button>
-      </div>
-
-      <div class="link-card">
-        <a href="https://x.com/h3cke5" target="_blank" class="link-text">
-          <i class="fa-brands fa-twitter" style="margin-right:8px;"></i> <span data-lang="LINK_TWITTER">Twitter</span>
-        </a>
-        <button class="qr-btn" onclick="openModal('https://x.com/h3cke5')">⋮</button>
-      </div>
-
-      <div class="link-card">
-        <a href="https://github.com/h3cke5" target="_blank" class="link-text">
-          <i class="fa-brands fa-github" style="margin-right:8px;"></i> <span data-lang="LINK_GITHUB">GitHub</span>
-        </a>
-        <button class="qr-btn" onclick="openModal('https://github.com/h3cke5')">⋮</button>
-      </div>
-    </main>
-    <footer>
-      <p><span data-lang="FOOTER_COPY">© 2025 HECKA. All rights reserved.</span></p>
-    </footer>
-  </div>
-
-  <!-- Overlay QR -->
-  <div id="qrOverlay" class="overlay">
-    <div class="qr-box">
-      <button class="close-btn" onclick="closeModal()">✖</button>
-      <h2 data-lang="LINK">Share Link</h2>
-      <p data-lang="LINK_DESC">Scan the QR code or use the buttons below.</p>
-
-      <div class="qr-inner">
-        <img id="qrImage" src="" alt="QR Code" class="qr-img">
-      </div>
-
-      <div class="actions">
-        <button id="shareBtn">🔗</button>
-        <button id="copyBtn">📋</button>
-        <button id="downloadBtn">⬇️</button>
-      </div>
+    <div id="overlay" onclick="entrarNoSite()">
+        <p data-i18n="overlay">[ CLICK TO ENTER ]</p>
     </div>
-  </div>
 
-  <script>
-    // Multilíngue
-    const langData = {
-      en: {
-    ABOUT: "Developer • Content Creator",
-    LINK: "Share Link",
-    LINK_DESC: "Scan the QR or use the buttons below",
-    LINK_INSTAGRAM: "Instagram",
-    LINK_DISCORD: "Discord",
-    LINK_TWITCH: "Twitch",
-    LINK_TWITTER: "Twitter / X",
-    LINK_GITHUB: "GitHub",
-    LINK_OOTD: "OOTD (HCKE FOR 10€)",
-    FOOTER_COPY: "© 2025 HECKA. All rights reserved."
-  },
-      pt: {
-        ABOUT: "Desenvolvedor • Criador de Conteúdo",
-        LINK: "Compartilhar Link",
-        LINK_DESC: "Scaneie o QR ou use os botões abaixo",
-        LINK_INSTAGRAM: "Instagram",
-        LINK_DISCORD: "Discord",
-        LINK_TWITCH: "Twitch",
-        LINK_TWITTER: "X / Twitter",
-        LINK_GITHUB: "GitHub",
-        LINK_OOTD: "OOTD (HCKE PARA 10€)",
-        FOOTER_COPY: "© 2025 HECKA. Todos os direitos reservados."
-      },
-      ro: {
-        ABOUT: "Dezvoltator • Creator de Conținut",
-        LINK: "Partajează Linkul",
-        LINK_DESC: "Scanează QR-ul sau folosește butoanele de mai jos",
-        LINK_INSTAGRAM: "Instagram",
-        LINK_DISCORD: "Discord",
-        LINK_TWITCH: "Twitch",
-        LINK_TWITTER: "Twitter / X",
-        LINK_GITHUB: "GitHub",
-        LINK_OOTD: "OOTD (HCKE 10€)",
-        FOOTER_COPY: "© 2025 HECKA. Toate drepturile rezervate."
-      }
-    };
+    <audio id="audio-element" onended="proximaMusica()"></audio>
 
-    const userLang = navigator.language.slice(0,2);
-    const lang = ["en","pt","ro"].includes(userLang) ? userLang : "en";
+    <div class="music-player">
+        <img id="track-cover" src="" alt="Capa">
+        
+        <div class="player-content">
+            <div class="track-info">
+                <span id="track-name" data-i18n="trackName">Song Name</span>
+                <span id="track-artist" data-i18n="trackArtist">Artist</span>
+            </div>
+            
+            <div class="player-controls-row">
+                <div class="player-controls">
+                    <button onclick="musicaAnterior()"><i class="fas fa-step-backward"></i></button>
+                    <button id="play-btn" onclick="togglePlay()"><i class="fas fa-pause"></i></button>
+                    <button onclick="proximaMusica()"><i class="fas fa-step-forward"></i></button>
+                </div>
 
-    document.querySelectorAll("[data-lang]").forEach(el => {
-      const key = el.getAttribute("data-lang");
-      if(langData[lang][key]) el.textContent = langData[lang][key];
-    });
+                <div class="volume-container">
+                    <i class="fas fa-volume-up" id="volume-icon" onclick="toggleMute()"></i>
+                    <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="ajustarVolume(this.value)">
+                </div>
+            </div>
+        </div>
+    </div>
 
-    // Atualização do avatar e frame
-    document.addEventListener('DOMContentLoaded', () => {
-      const userId = "817378339228221440";
-      const apiUrl = `https://discord-lookup-api-alpha.vercel.app/v1/user/${userId}`;
-      const profilePicture = document.getElementById('profile-picture');
-      const avatarFrame = document.getElementById('avatar-frame');
+    <div class="container">
+        <img class="profile-img" src="https://cdn.discordapp.com/avatars/817378339228221440/64e5b32dd4e75d1137a77ba93243f7df" alt="Perfil">
+        <div class="username">H3CKE5</div>
 
-      fetch(apiUrl)
-        .then(res => {
-          if(!res.ok) throw new Error(`HTTP Error! status: ${res.status}`);
-          return res.json();
-        })
-        .then(data => {
-          // Atualiza avatar
-          const avatarUrl = data.avatar ? data.avatar.link : './assets/pfp/default.jpg';
-          profilePicture.src = avatarUrl;
+        <div class="links-wrapper">
+            <div class="link-card-row">
+                <a href="https://o-otd.com/h3cke5" target="_blank" class="link-btn">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span data-i18n="linkOotd">OOTD (HCKE FOR 10€)</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://o-otd.com/h3cke5')">⋮</button>
+            </div>
+            <div class="link-card-row">
+                <a href="https://www.kugooescooters.com/?ref=h3cke5" target="_blank" class="link-btn">
+                    <i class="fa-solid fa-globe"></i>
+                    <span data-i18n="linkKukirin">Kukirin Web</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://www.kugooescooters.com/?ref=h3cke5')">⋮</button>
+            </div>
+            <div class="link-card-row">
+                <a href="https://github.com/h3cke5" target="_blank" class="link-btn">
+                    <i class="fa-brands fa-github"></i>
+                    <span data-i18n="linkGithub">Github</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://github.com/h3cke5')">⋮</button>
+            </div>
+            <div class="link-card-row">
+                <a href="https://discord.com/users/817378339228221440" target="_blank" class="link-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span data-i18n="contact">Contact</span>
+                </a>
+                <button class="qr-trigger-btn" onclick="openModal('https://discord.com/users/817378339228221440')">⋮</button>
+            </div>
+        </div>
 
-          // Atualiza frame se disponível
-          if(data.avatar_decoration && data.avatar_decoration.asset){
-            const asset = data.avatar_decoration.asset;
-            avatarFrame.src = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png`;
-            avatarFrame.style.display = 'block';
-          } else {
-            avatarFrame.style.display = 'none';
-          }
-        })
-        .catch(err => console.error("Error fetching user data:", err));
-    });
-  </script>
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/@h3cke5" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://discord.com/users/817378339228221440" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://www.twitch.tv/h3cke5" target="_blank"><i class="fab fa-twitch"></i></a>
+            <a href="https://x.com/h3cke5" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/h3cke" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
 
-  <script src="script.js"></script>
+        <footer class="main-footer">
+            <p><span data-i18n="footerCopy">© 2025 HECKA. All rights reserved.</span></p>
+        </footer>
+    </div>
+
+    <div id="qrOverlay" class="qr-modal-overlay" onclick="closeModal()">
+        <div class="qr-box" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">✖</button>
+            <h2 data-i18n="shareTitle">Share Link</h2>
+            <p data-i18n="shareDesc">Scan the QR or use the buttons below.</p>
+
+            <div class="qr-inner">
+                <img id="qrImage" src="" alt="QR Code" class="qr-img">
+            </div>
+
+            <div class="actions">
+                <button id="shareBtn" title="Share">🔗</button>
+                <button id="copyBtn" title="Copy">📋</button>
+                <button id="downloadBtn" title="Download">⬇️</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
